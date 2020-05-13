@@ -1,55 +1,72 @@
 import React,  { useState, useEffect } from "react"
-import splitWords from "./wordlist"
+import testList from "./testlist"
+import "./app.css"
 
 const App = () => {
+
 // Initialise wordlist and session score
-  const [words] = useState(splitWords)
-  let [points, isCorrect] = useState(0)
+  let [words, getNewWords] = useState(testList())
+  let [attempts, adjustWordCount] = useState(0)
+  let [points, adjustPoints] = useState(0)
+  let {characters, charactersRight} = useState()
+
   let [isTestRunning, toggleTestRunning] = useState(false)
+  let [isTestComplete, toggleTestComplete] = useState(true)
 
 // Typing goal word and attempt
   const [typedWord, updateTypedWord] = useState("")
-  let [wordToType, nextWord] = useState("")
+  let [wordToType, nextWord] = useState(words[0])
 
 
 // Check entered word for correctness if the last character entered was a space/whitespace
   const checkWord = (word) => {
+
+    if (isTestRunning === false && isTestComplete === true) {
+      runTest(10)
+    }
+
     if (isTestRunning) {
       if ( word.charAt(word.length - 1 ) === " " ) {
         if ( word === wordToType + " " ) {
-          isCorrect(points += 1)
+          adjustPoints(points += 1)
         }
+        adjustWordCount(attempts += 1)
+        nextWord(words[attempts])
         updateTypedWord("")
-        getTestWord()
       }
     }
   }
 
 // Start timing and scoring system
-  const startTest = (duration) => {
+  const runTest = (duration) => {
+    toggleTestRunning(true)
+    toggleTestComplete(false)
+    setInterval((countdown) => {
+      console.log(countdown)
+
+    })
     setTimeout(() => {
       toggleTestRunning(false)
     }, duration*1000)
   }
 
-
-// Get new test words
-  const getTestWord = () => {
-    let i = Math.floor(Math.random()*words.length)
-    nextWord(wordToType = words[i])
+  const resetTest = () => {
+    toggleTestComplete(true)
+    adjustPoints(0)
+    updateTypedWord("")
+    getNewWords(testList())
   }
 
-// componentDidMount -- Display first word to type
-  useEffect(() => {
-    getTestWord()
-    console.log(isTestRunning)
-  }, [])
 
 // Output
   return (
-    <div>
-      <h1>{wordToType}</h1>
-
+    <div className="container">
+      <div className="upcoming-words">
+        <h1 className="word-to-type">{words[attempts]}</h1>
+        <h1 className="upcoming-word-1">{words[attempts + 1]}</h1>
+        <h1 className="upcoming-word-2">{words[attempts + 2]}</h1>
+        <h1 className="upcoming-word-3">{words[attempts + 3]}</h1>
+      </div>
       <input
         value={typedWord}
         onChange={(event) => {
@@ -59,12 +76,12 @@ const App = () => {
 
       <button
         onClick={() => {
-          startTest(10)
-          toggleTestRunning(true)}}>
-        Start test
+          resetTest()
+          }}>
+        Reset
       </button>
 
-      <h1>{points}</h1>
+      <h1>{points} / {attempts}</h1>
     </div>
   )
 }
