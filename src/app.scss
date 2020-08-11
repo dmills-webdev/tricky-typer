@@ -1,0 +1,82 @@
+/*------ Variables ------*/
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400&display=swap');
+$base-font: 'Source Sans Pro', sans-serif;
+
+$primary-color: hsla(30, 90%, 50%, 1);
+$primary-color60: hsla(30, 90%, 60%, 1);
+$primary-color70: hsla(30, 90%, 70%, 1);
+$primary-color80: hsla(30, 90%, 80%, 1);
+$primary-color90: hsla(30, 90%, 90%, 1);
+
+$secondary-color: hsla(30, 90%, 95%, 1);
+
+/*------ Main Styles ------*/
+body {
+  font-family: $base-font;
+  font-weight: 200;
+  font-size: 1em;
+}
+
+h1 {
+  text-align: center;
+  color: $primary-color;
+}
+
+.container {
+  background: $secondary-color;
+  border-radius: 10px 10px;
+  padding: 10px;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.upcoming-words p {
+  display: inline;
+  padding-right: 10px;
+
+
+  font-size: 2em;
+  font-weight: 400;
+}
+
+.word-to-type {
+  color: $primary-color;
+  padding-left: 3px;
+}
+
+.upcoming-word-1 {
+  color: $primary-color60;
+}
+
+.upcoming-word-2 {
+  color: $primary-color70;
+}
+
+.upcoming-word-3 {
+  color: $primary-color80;
+}
+
+.upcoming-word-4 {
+  color: $primary-color90;
+}
+
+
+.container input {
+  width: 100%;
+  height: 1.2em;
+  border: 0;
+  border-bottom: 2px dotted $primary-color;
+  margin-bottom: 10px;
+
+  font-family: inherit;
+  font-size: 2em;
+}
+
+.container button {
+  border: none;
+  border-radius: 5px 5px;
+  padding: 7px;
+
+  font-size: 1em;
+  background-color: $primary-color70;
+}
