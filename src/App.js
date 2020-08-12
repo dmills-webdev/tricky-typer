@@ -5,7 +5,7 @@ import "./app.scss"
 
 function App() {
     return (
-      <div>
+      <div className={"page-container"}>
         <h1>TrickyTyper</h1>
         <TypingTestContainer />
       </div>

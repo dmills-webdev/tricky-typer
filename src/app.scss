@@ -1,4 +1,4 @@
-/*------ Variables ------*/
+/*------Color Variables ------*/
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400&display=swap');
 $base-font: 'Source Sans Pro', sans-serif;
 
@@ -9,25 +9,57 @@ $primary-color80: hsla(30, 90%, 80%, 1);
 $primary-color90: hsla(30, 90%, 90%, 1);
 
 $secondary-color: hsla(30, 90%, 95%, 1);
+$white: #FFF;
+
+/*------Media Variables ------*/
+$breakpoint-tablet: 768px;
+$breakpoint-pc: 1024px;
 
 /*------ Main Styles ------*/
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
 body {
   font-family: $base-font;
   font-weight: 200;
   font-size: 1em;
+  color: $primary-color;
+}
+@media (min-width: $breakpoint-pc) {
+  body {
+    background-color: $primary-color
+  }
 }
 
 h1 {
+  margin: 0;
   text-align: center;
   color: $primary-color;
 }
 
-.container {
-  background: $secondary-color;
+.page-container {
+  padding-top: 10px;
+}
+@media (min-width: $breakpoint-pc) {
+  .page-container {
+    width: $breakpoint-pc;
+    min-height: 100vh;
+    margin: 0 auto;
+    background-color: $white;
+
+  }
+}
+
+.game-container {
   border-radius: 10px 10px;
   padding: 10px;
+  margin: 10px 10px 0 10px;
   max-width: 100%;
   overflow: hidden;
+
+  background: $secondary-color;
 }
 
 .upcoming-words p {
@@ -60,8 +92,15 @@ h1 {
   color: $primary-color90;
 }
 
+.controls-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 
-.container input {
+  font-size: 1.5em;
+}
+
+.game-container input {
   width: 100%;
   height: 1.2em;
   border: 0;
@@ -72,11 +111,12 @@ h1 {
   font-size: 2em;
 }
 
-.container button {
+.game-container button {
   border: none;
   border-radius: 5px 5px;
-  padding: 7px;
+  padding: 8px 8px 7px 7px;
 
-  font-size: 1em;
+  font-size: 1.2em;
+  color: $white;
   background-color: $primary-color70;
 }

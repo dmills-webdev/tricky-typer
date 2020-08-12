@@ -2,7 +2,7 @@ import React from "react"
 
 function TypingTestComponent({ words, points, attempts, countdown, typedWord, updateTypedWord, checkWord, resetTest }) {
   return (
-    <div className="container">
+    <div className="game-container">
       <div className="upcoming-words">
         <p className="word-to-type">{words[attempts]}</p>
         <p className="upcoming-word-1">{words[attempts + 1]}</p>
@@ -16,16 +16,16 @@ function TypingTestComponent({ words, points, attempts, countdown, typedWord, up
           updateTypedWord(event.target.value)
           checkWord(event.target.value)}}
       />
-
-      <button
-        onClick={() => {
-          resetTest()
-          }}>
-        Reset
-      </button>
-
-      <p>{points} / {attempts}</p>
-      <p>{countdown}</p>
+      <div className="controls-container">
+        <p>{points} / {attempts}</p>  {/* TODO: add scaling at end of each test*/}
+        <p>{countdown}s</p>
+        <button
+          onClick={() => {
+            resetTest()
+            }}>
+          Reset
+        </button>
+      </div>
     </div>
   )
 }

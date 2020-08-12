@@ -1,4 +1,4 @@
-import React,  { useState } from "react"
+import React,  { useState, useEffect } from "react"
 import TypingTestComponent from "./TypingTestComponent" //Presentational component
 import testList from "./testlist" // Import randomised test list from a larger word list
 
@@ -12,7 +12,8 @@ const TypingTestContainer = () => {
   // TODO: add character tracking logic
   //let [characters, charactersRight] = useState(0)
 
-  let [countdown, setCountdown] = useState(10)
+  let [countdown, setCountdown] = useState(0)
+  let [duration, setDuration] = useState(10)
 // Initialise test timing variables
   let [isTestRunning, toggleTestRunning] = useState(false)
   let [isTestComplete, toggleTestComplete] = useState(true)
@@ -24,7 +25,7 @@ const TypingTestContainer = () => {
 // Check entered word for correctness if the last character entered was a space/whitespace
   const checkWord = (word) => {
     if (isTestRunning === false && isTestComplete === true) {
-      runTest(10)
+      runTest()
     }
     if (isTestRunning) {
       if ( word.charAt(word.length - 1 ) === " " ) {
@@ -38,51 +39,40 @@ const TypingTestContainer = () => {
     }
   }
 
-
-
-
-
-
 // Start timing and scoring system
-  var countdownClock
-
   const count = () => {
     setCountdown(countdown => countdown - 1)
   }
 
   const clearTimer = () => {
-    console.log("Clearing " + countdownClock)
-    clearInterval(countdownClock)
+    clearInterval(window.cdc)
   }
 
-  const runTest = (duration) => {
-    setCountdown(duration)
+  const runTest = () => {
     toggleTestRunning(true)
     toggleTestComplete(false)
-
-    countdownClock = setInterval( () => count(), 1000)
-
-    setTimeout( () => {
+    window.cdc = setInterval( () => { count() }, 1000) // Set reference
+    setTimeout(() => {
+      toggleTestRunning(false)
       clearTimer()
     }, duration*1000)
   }
 
 // Reset test early/midway through
   const resetTest = () => {
-    console.log("Resetting " + countdownClock)
-    clearTimer()
-
     toggleTestRunning(false)
     toggleTestComplete(true)
+
+    setCountdown(duration)
+    clearTimer()
     adjustPoints(0)
     adjustWordCount(0)
     updateTypedWord("")
     getNewWords(testList())
   }
-
-
-
-
+  useEffect(() => { // Reset on app loading
+    resetTest()
+  },[])
 
 // Render
     return(
