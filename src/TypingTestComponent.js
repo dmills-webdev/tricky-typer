@@ -1,6 +1,6 @@
 import React from "react"
 
-function TypingTestComponent({ words, points, attempts, countdown, typedWord, updateTypedWord, checkWord, resetTest }) {
+function TypingTestComponent({ words, points, attempts, wpm, countdown, typedWord, updateTypedWord, checkWord, resetTest }) {
   return (
     <div className="game-container">
       <div className="upcoming-words">
@@ -19,6 +19,7 @@ function TypingTestComponent({ words, points, attempts, countdown, typedWord, up
       <div className="controls-container">
         <p>{points} / {attempts}</p>  {/* TODO: add scaling at end of each test*/}
         <p>{countdown}s</p>
+        <span><p>{wpm}</p><p className="unit-text">wpm</p></span>
         <button
           onClick={() => {
             resetTest()

@@ -13,7 +13,7 @@ const TypingTestContainer = () => {
   //let [characters, charactersRight] = useState(0)
 
   let [countdown, setCountdown] = useState(0)
-  let [duration, setDuration] = useState(10)
+  let [duration, setDuration] = useState(60)
 // Initialise test timing variables
   let [isTestRunning, toggleTestRunning] = useState(false)
   let [isTestComplete, toggleTestComplete] = useState(true)
@@ -79,6 +79,7 @@ const TypingTestContainer = () => {
       <TypingTestComponent
         words={words}
         points={points}
+        wpm={(points*(60/(61-countdown))).toFixed(1)}
         countdown={countdown}
         attempts={attempts}
         typedWord={typedWord}
