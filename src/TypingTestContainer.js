@@ -20,16 +20,19 @@ const TypingTestContainer = () => {
 
 // Typing goal word and attempt
   const [typedWord, updateTypedWord] = useState("")
-  let [wordToType, nextWord] = useState(words[0])
+  let [wordToType, nextWord] = useState("")
 
 // Check entered word for correctness if the last character entered was a space/whitespace
   const checkWord = (word) => {
     if (isTestRunning === false && isTestComplete === true) {
+      nextWord(words[attempts])
       runTest()
     }
+    //While a test is running, check the user has typed at least one character,
+    //then if the word matches award a point and move onto the next word
     if (isTestRunning) {
       if ( word.charAt(word.length - 1 ) === " " ) {
-        if ( word === wordToType + " " ) {
+        if ( word.toLowerCase() === wordToType + " " ) {
           adjustPoints(points += 1)
         }
         adjustWordCount(attempts += 1)
@@ -68,6 +71,7 @@ const TypingTestContainer = () => {
     adjustPoints(0)
     adjustWordCount(0)
     updateTypedWord("")
+
     getNewWords(testList())
   }
   useEffect(() => { // Reset on app loading

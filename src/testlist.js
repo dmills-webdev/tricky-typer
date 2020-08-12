@@ -1,10 +1,11 @@
 import splitWords from "./wordlist"
 
 const testList = () => {
-  let newTestList = []
-  for  (let i = 0; i < 500; i++) {
+  const newTestList = []
+
+  for  (let i = 0; i < 10; i++) {
     let n = Math.floor(Math.random()*1000)
-    newTestList.push(splitWords[n])
+    newTestList.push( String(splitWords[n]).toLowerCase() ) // Import words, ensure they are string, and force toLowerCase
   }
   return newTestList
 }
