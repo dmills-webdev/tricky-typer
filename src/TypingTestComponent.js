@@ -17,8 +17,8 @@ function TypingTestComponent({ words, points, attempts, wpm, countdown, typedWor
           checkWord(event.target.value)}}
       />
       <div className="controls-container">
-        <p>{points} / {attempts}</p>  {/* TODO: add scaling at end of each test*/}
-        <p>{countdown}s</p>
+        <span><p>{points} / {attempts}</p><p className="unit-text">Correct/Attempts</p></span>  {/* TODO: add scaling at end of each test*/}
+        <span><p>{countdown}s</p><p className="unit-text">Time remaining</p></span>
         <span><p>{wpm}</p><p className="unit-text">wpm</p></span>
         <button
           onClick={() => {

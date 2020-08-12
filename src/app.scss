@@ -57,7 +57,7 @@ h1 {
 }
 
 .unit-text {
-  font-size: 0.5em;
+  font-size: 0.7em;
 }
 
 /*--------------------------------------------------------- Game Styles ------*/
@@ -109,6 +109,10 @@ h1 {
   align-items: center;
 
   font-size: 1.5em;
+}
+
+.controls-container span {
+  text-align: center;
 }
 
 .game-container input {
