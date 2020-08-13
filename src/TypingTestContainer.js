@@ -4,19 +4,21 @@ import testList from "./testlist" // Import randomised test list from a larger w
 
 const TypingTestContainer = () => {
 
-// Initialise wordlist and session score
+// Hiscores
+  let hiscores = []
+
+// Initialise wordlist and scoring
   let [words, getNewWords] = useState(testList())
   let [attempts, adjustWordCount] = useState(0)
   let [points, adjustPoints] = useState(0)
-
   // TODO: add character tracking logic
   //let [characters, charactersRight] = useState(0)
 
-  let [countdown, setCountdown] = useState(0)
-  let [duration, setDuration] = useState(60)
 // Initialise test timing variables
   let [isTestRunning, toggleTestRunning] = useState(false)
   let [isTestComplete, toggleTestComplete] = useState(true)
+  let [countdown, setCountdown] = useState(0)
+  let [duration, setDuration] = useState(60)
 
 // Typing goal word and attempt
   const [typedWord, updateTypedWord] = useState("")
@@ -78,14 +80,27 @@ const TypingTestContainer = () => {
     resetTest()
   },[])
 
+// Calculate and return accuracy as long as it can be calculated
+  const getAccuracy = () => {
+    let accuracy = ((points/attempts)*100).toFixed(1)
+    if (isNaN(accuracy)) {
+      return 0
+    } else {
+      return accuracy
+    }
+  }
+
 // Render
     return(
       <TypingTestComponent
+        //Scoring props
         words={words}
         points={points}
-        wpm={(points*(60/(61-countdown))).toFixed(1)}
-        countdown={countdown}
         attempts={attempts}
+        accuracy={getAccuracy()}
+        wpm={ (points*(60/(61-countdown))).toFixed(1) }
+        //Operational props
+        countdown={countdown}
         typedWord={typedWord}
         updateTypedWord={updateTypedWord}
         checkWord={checkWord}
