@@ -1,6 +1,13 @@
 import React from "react"
 
 function TypingTestComponent({ words, points, attempts, accuracy, wpm, countdown, typedWord, updateTypedWord, checkWord, resetTest }) {
+
+  function handleChange(event) {
+    let value = event.target.value
+    updateTypedWord(value)
+    checkWord(value)
+  }
+
   return (
     <div className="game-container">
       <div className="upcoming-words">
@@ -12,9 +19,7 @@ function TypingTestComponent({ words, points, attempts, accuracy, wpm, countdown
       </div>
       <input
         value={typedWord}
-        onChange={(event) => {
-          updateTypedWord(event.target.value)
-          checkWord(event.target.value)}}
+        onChange={handleChange}
       />
       <div className="controls-container">
         <div className="metrics-container">
@@ -24,9 +29,7 @@ function TypingTestComponent({ words, points, attempts, accuracy, wpm, countdown
           <span><p>{accuracy}</p><p className="unit-text">%</p></span>
         </div>
         <button
-          onClick={() => {
-            resetTest()
-            }}>
+          onClick={resetTest}>
           Reset
         </button>
       </div>

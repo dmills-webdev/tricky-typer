@@ -1,9 +1,13 @@
 import React from "react"
 import LeaderboardComponent from "./LeaderboardComponent"
+import "./TypingTestContainer"
 
-const LeaderboardContainer = () => {
+// Todo: pass hiscores back?
+
+function LeaderboardContainer({ hiscores }) {
   return (
-    <LeaderboardComponent />
+    <LeaderboardComponent
+      hiscores={hiscores} />
   )
 }
 
