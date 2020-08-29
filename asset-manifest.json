@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/tricky-typer/static/css/main.e1c8a331.chunk.css",
+    "main.js": "/tricky-typer/static/js/main.df018202.chunk.js",
+    "main.js.map": "/tricky-typer/static/js/main.df018202.chunk.js.map",
+    "runtime-main.js": "/tricky-typer/static/js/runtime-main.506bbf73.js",
+    "runtime-main.js.map": "/tricky-typer/static/js/runtime-main.506bbf73.js.map",
+    "static/js/2.4e4fccf5.chunk.js": "/tricky-typer/static/js/2.4e4fccf5.chunk.js",
+    "static/js/2.4e4fccf5.chunk.js.map": "/tricky-typer/static/js/2.4e4fccf5.chunk.js.map",
+    "index.html": "/tricky-typer/index.html",
+    "precache-manifest.572926f7a94ec985b5769038677878c9.js": "/tricky-typer/precache-manifest.572926f7a94ec985b5769038677878c9.js",
+    "service-worker.js": "/tricky-typer/service-worker.js",
+    "static/css/main.e1c8a331.chunk.css.map": "/tricky-typer/static/css/main.e1c8a331.chunk.css.map",
+    "static/js/2.4e4fccf5.chunk.js.LICENSE.txt": "/tricky-typer/static/js/2.4e4fccf5.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.506bbf73.js",
+    "static/js/2.4e4fccf5.chunk.js",
+    "static/css/main.e1c8a331.chunk.css",
+    "static/js/main.df018202.chunk.js"
+  ]
+}
