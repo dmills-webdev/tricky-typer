@@ -15,7 +15,7 @@ function TypingTestContainer({ hiscores, updateHiscores }) {
   let [isTestRunning, toggleTestRunning] = useState(false)
   let [isTestComplete, toggleTestComplete] = useState(true)
   let [countdown, setCountdown] = useState(0)
-  let [duration, setDuration] = useState(10)
+  let [duration, setDuration] = useState(60)
 
 // Typing goal word and attempt
   let [typedWord, updateTypedWord] = useState("")
