@@ -1,6 +1,8 @@
-## typing-tester
+# TrickyTyper
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+TrickyTyper is a speed typing game and practice tool. Users attempt to correctly type the words that appear in the word queue as fast as possible before the timer runs out. The tests use a randomly generated wordlist from a larger word library each game while the metrics display shows the realtime statistics of the current test, such as words per minute and accuracy as it runs. A highscore list is stored locally to track improvement between sessions. TrickyTyper is made with Javascript and React.
+
+--------------------------------------
 
 ## Available Scripts
 
